@@ -1,0 +1,40 @@
+<html>
+<head>
+	<title>Phone Checker</title>
+	<script type="text/javascript">
+		// Phone validation checker
+		function onClickValidate(phoneNumber){
+			// get value of phoneNumber from object
+			alert("Clicked-"+phoneNumber.value);
+			// create list of valid phone numbers formats
+			var formats = "(999) 999-9999|9999999999|999 999 9999|(999) 999 9999|";
+			// generate regular Expression
+var r = RegExp("^(" +
+               formats
+                 .replace(/([\(\)])/g, "\\$1")
+                 .replace(/9/g,"\\d") +
+               ")$");
+			// check validity
+			if(phoneNumber.value.match(r))  
+     { 
+     	// do something 
+       alert("matches");          
+     }  
+   else  
+     {  
+     	// do something in case of not a valid phonenumber
+       alert("Not a valid Phone Number");  
+        
+     }  
+
+		}
+	</script>
+</head>
+<body>
+	<form name="myForm" >Phone Number:
+    <input type="text" id="phone" name="p">
+    <br>
+    <input type="button" value="Submit" onclick="onClickValidate(document.myForm.p);">
+</form>
+</body>
+</html>
